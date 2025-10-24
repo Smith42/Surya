@@ -25,7 +25,7 @@ classifiers = [
   "Topic :: Scientific/Engineering :: Astronomy",
   "Topic :: Scientific/Engineering :: Physics",
 ]
-requires-python = ">=3.11"
+requires-python = "~=3.11.0"
 dependencies = [
   # Core PyTorch deps (resolved from CUDA index via [tool.uv.sources] below)
   "torch>=2.6.0",
