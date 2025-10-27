@@ -2,7 +2,6 @@ import yaml
 import torch
 import numpy as np
 import os
-import polars as pl
 from huggingface_hub import snapshot_download
 from torch.utils.data import DataLoader
 
@@ -231,5 +230,4 @@ def main():
 
 if __name__ == "__main__":
     data = main()
-    df = pl.DataFrame(data)
-    df.write_parquet("surya.parquet")
+    np.save("embeddings.npy", data[0]["embeddings"])
