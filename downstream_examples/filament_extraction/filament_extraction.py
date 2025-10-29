@@ -2,6 +2,7 @@ import yaml
 import torch
 import numpy as np
 import os
+import einops
 from huggingface_hub import snapshot_download
 from torch.utils.data import DataLoader
 
@@ -231,3 +232,4 @@ def main():
 if __name__ == "__main__":
     data = main()
     np.save("embeddings.npy", data[0]["embeddings"])
+    np.save("embeddings_reshaped.npy", einops.rearrange(data[0]["embeddings"], 'B (H W) C -> B H W C', H=256, W=256))
