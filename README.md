@@ -1,3 +1,5 @@
+ nar = einops.rearrange(ar, '(H W) C -> H W C', H=256)
+
 <div align="center">
 
 # ☀️ Surya: Foundation Model for Heliophysics ☀️
