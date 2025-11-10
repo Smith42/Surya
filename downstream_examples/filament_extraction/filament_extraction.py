@@ -154,6 +154,7 @@ def run_inference(model, dataloader, device):
                     "timestamps_input": batch_metadata.get("timestamps_input"),
                     "timestamps_targets": batch_metadata.get("timestamps_targets")
                 })
+                break
     
     return results
 
@@ -204,7 +205,7 @@ def main():
     
     dataloader = DataLoader(
         dataset,
-        batch_size=5,
+        batch_size=1,
         shuffle=False,
         collate_fn=custom_collate_fn,
         num_workers=0,
@@ -233,3 +234,4 @@ if __name__ == "__main__":
     data = main()
     np.save("embeddings.npy", data[0]["embeddings"])
     np.save("embeddings_reshaped.npy", einops.rearrange(data[0]["embeddings"], 'B (H W) C -> B H W C', H=256, W=256))
+    np.save("target_timestamp.npy", data[0]["timestamps_targets"])
